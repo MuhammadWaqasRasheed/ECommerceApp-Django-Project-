@@ -1,6 +1,79 @@
 {% extends 'shopApp/base.html' %}
+{% load static %}
 
 {% block main %}
-    {% include 'shopApp/navbar.html' %}
-    <h1>Allah Almighty Is Greatest Of All</h1>
+    
+    <!--<h1>Allah Almighty Is Greatest Of All</h1>-->
+
+    <!--Carousal Code Start-->
+    <div class="row mt-1" >
+        <div class="col-sm-12" style="margin:auto;" >
+            <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+                <ol class="carousel-indicators">
+                  <li data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"></li>
+                  <li data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"></li>
+                  <li data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"></li>
+                </ol>
+                <div class="carousel-inner">
+                  <div class="carousel-item active">
+                    <img src="{% static 'images/1.png' %}" class="d-block w-100" alt="...">
+                  </div>
+                  <div class="carousel-item">
+                    <img src="{% static 'images/2.png' %}" class="d-block w-100" alt="...">
+                  </div>
+                  <div class="carousel-item">
+                    <img src="{% static 'images/4.png' %}" class="d-block w-100" alt="...">
+                  </div>
+                </div>
+                <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-bs-slide="prev">
+                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Previous</span>
+                </a>
+                <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-bs-slide="next">
+                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Next</span>
+                </a>
+            </div>
+        </div>
+    </div> <!--Carousal Code ending-->  
+     
+
+    <!--now displaying items and categories-->
+
+    <div class="row mt-2">
+      <div class="col-sm-2">
+        <!--Displying Categories first-->
+        <div class="list-group">
+          <button type="button" class="list-group-item list-group-item-action active" aria-current="true">
+            Search by Brands
+          </button>
+          {% for c in categories %}
+            <button type="button" class="list-group-item list-group-item-action">{{c}}</button>
+          {% endfor %}
+        </div><!--Displying Categories end-->
+      </div>
+    
+      <div class="col-sm-10">
+
+        {% load my_filters %}
+        <!--Card Code start-->
+        {% for laptop in laptops %}
+          <div class="card" style="width: 18rem; display:inline-block;">
+            <img src="/media/{{laptop.image}}" class="card-img-top" alt="Pic Missing">
+            <div class="card-body">
+              <h5 class="card-title">{{laptop.name|truncatechars:20}}</h5>
+              <p class="card-text mt-ntop-small"><b>PRICE : </b>{{laptop.price}}.PKR</p>
+              <p class="card-text cut-txt red-txt mt-ntop-small">{{laptop.price|subtract:1050}}.PKR</p>
+              
+              <a href="#" class="btn btn-danger mt-ntop-small max-width">Details</a>
+              <a href="#" class="btn btn-primary mt-2 max-width">Add To Cart</a>
+            </div>
+          </div>
+        {% endfor %}
+        <!--card code end-->        
+      </div>
+      
+
+    </div>  <!--Row Div Ending -->
+
 {% endblock %}

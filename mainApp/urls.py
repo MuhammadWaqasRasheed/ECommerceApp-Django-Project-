@@ -14,15 +14,20 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path,include
+#for media files
+from django.conf.urls.static import static
+from django.conf import settings
 
 #imports for Shop
 from shopApp import views as shopViews
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    path('admin/', admin.site.urls,name="adminPanel"),
     #shopApp Paths
     path('',shopViews.home,name="shopHome"),
     path('shop/aboutUs',shopViews.aboutUs,name="shopAboutUs"),
     path('shop/contactUs',shopViews.contactUs,name="shopContactUs"),
-]
+    #for Django All Auth Module
+    path('accounts/', include('allauth.urls')),
+]+static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)

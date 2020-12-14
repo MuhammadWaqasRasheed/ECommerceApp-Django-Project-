@@ -1,0 +1,52 @@
+*{
+    margin:0;
+    padding:0;
+}
+.html{
+    font-size:62.5rem;  /*Because 1rem=16px and we want 1rem=10px*/
+}
+
+.round-corners{
+    border-radius:10px;
+}
+
+.max-width{
+    width:100%;
+}
+
+/* style for displying lists for brands , and search by price etc */
+.list-group-item{
+    text-align: center;
+    padding: 0.4rem;
+}
+
+.cut-txt{
+    text-decoration:line-through;
+}
+
+.red-txt{
+    color:red;
+}
+
+/* utility class for negative top margin*/
+.mt-ntop-small{
+    margin-top: -0.5rem;
+}
+
+/* Utility Classes for top margin */
+.mr-top-ex-large{
+    margin-top: 6rem;
+}
+
+.mr-top-large{
+    margin-top: 4rem;
+}
+
+.mr-top-medium{
+    margin-top: 2rem;
+}
+
+.mr-top-small{
+    margin-top: 0.5rem;
+}
+
